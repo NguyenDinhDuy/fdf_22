@@ -1,4 +1,8 @@
 en:
+  mailer:
+    new_order: "New Order"
+    hello: "Hello"
+    new_order_message: "You have new order"
   layouts:
     header:
       logo: "Food & Drink"
@@ -14,6 +18,14 @@ en:
       setting: "Setting"
       product_suggests: "Product Suggest"
       orders: "Orders"
+      categories: "Categories"
+      classifies: "Classifies"
+      products: "Products"
+    header_customer:
+      logo: "Food & Drink"
+    header_admin:
+      logo: "Food & Drink"
+
     footer:
       name: "Food and Drink"     
       link_about: "About"
@@ -89,6 +101,12 @@ en:
         separator: "."
 
   controllers:
+    orders:
+      update:
+        flash_success: "Order Success"
+        flash_danger: "Order Failed"
+    find_order:
+        flash: "Order not found"
     flash:
       delete_success: "User is deleted"
       delete_error: "User is not deleted"
@@ -178,6 +196,8 @@ en:
         flash_danger: "OrderItem not found"
       find_order:
         flash: "Order not found"
+      find_product:
+        flash: "Product not found"
     carts:
       destroy:
         flash_danger: "Canceled order"
@@ -200,6 +220,7 @@ en:
         control: "Control Orders"
         submit: "Submit"
       index:
+        heading: "Orders Managament"
         title: "Orders Managament"
         order_name: "Order Name"
         order_time: "Order Time"
@@ -244,6 +265,7 @@ en:
         heading: "Add Category"
     product_suggests:
       index:
+        heading: "Manage Product Suggests"
         title: "Manage Product Suggests"
         delete_button: "Delete"
         action: "Accept Product Suggests"
@@ -381,8 +403,8 @@ en:
       
   orders:
     show:
-      btn_submit: "ĐẶT HÀNG"
-      link_delete: "HUY ĐẶT HÀNG"
+      btn_submit: "Order"
+      link_delete: "Cancel"
       confirm: "Are you sure  delete order ?"
       order: "Order"
       order_infor: "Order information"

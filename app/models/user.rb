@@ -13,6 +13,8 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: {minimum: 6}, allow_blank: true
 
+  scope :admin, ->{where is_admin: true}
+
   class << self
     def digest string
       cost = ActiveModel::SecurePassword.min_cost ?

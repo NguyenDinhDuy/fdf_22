@@ -1,9 +1,11 @@
 class OrderItemsController < ApplicationController
   before_action :logged_in_user 
   before_action :find_order
+  before_action :find_product, only: :create
 
   def create
     order_item = current_order.order_items.build order_item_params
+    order_item.price = @product.price
     item = current_order.order_items.find_by product_id: order_item.product_id
     if item
       item.update_attributes quantity: order_item.quantity + item.quantity
@@ -48,13 +50,21 @@ class OrderItemsController < ApplicationController
 
   private
   def order_item_params
-    params.require(:order_item).permit :product_id, :quantity, :price
+    params.require(:order_item).permit :product_id, :quantity
   end 
 
   def find_order
     if current_order.nil?
       flash[:danger] = "controllers.order_items.find_order.flash"
       redirect_to products_path
+    end
+  end
+
+  def find_product
+    @product = Product.find_by id: order_item_params[:product_id]
+    if @product.nil?
+      flash[:danger] = "controllers.order_items.find_product.flash"
+      redirect_to root_path
     end
   end
 end

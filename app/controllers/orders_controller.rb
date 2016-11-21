@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
     current_order.update_attributes status: true
     if current_order.update_attributes cart_params
       flash[:success] = t "controllers.orders.update.flash_success"
+      @order.send_new_order_email
       session.delete :order_id
       redirect_to root_url
     else
